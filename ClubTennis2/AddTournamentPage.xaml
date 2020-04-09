@@ -1,0 +1,94 @@
+﻿<Page x:Class="ClubTennis2.AddTournamentPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClubTennis2"
+      mc:Ignorable="d" 
+      d:DesignWidth="950"
+      Title="AddTournamentPage"
+      Background="White">
+
+    <Grid >
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="35" />
+        </Grid.RowDefinitions>
+
+
+
+        <Grid Grid.Row="0" Margin="10">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Nom: " Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center" Margin="20,20,20,20"/>
+            <TextBox x:Name="nomTextBox" Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" Margin="0,10,0,10"/>
+
+            <Label Content="Date du tournoi: " Grid.Row="0" Grid.Column="2" VerticalContentAlignment="Center"  HorizontalAlignment="Center"/>
+            <Label x:Name="theDate" Content="" Grid.Row="1" Grid.Column="2" VerticalContentAlignment="Top"  HorizontalAlignment="Center"/>
+            <Calendar x:Name="debutCompetitionCalendar" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Margin="15,0,15,0"/>
+            <Button x:Name="validerB" Click="ValiderDate" Grid.Row="2" Grid.Column="1" Content="Valider Date" Margin="5,20,5,20"/>
+            <Button x:Name="modifierDate" Visibility="Hidden" Click="ModifierDate" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Height="100" Content="Modifier Date" Margin="20,20,20,20"/>
+
+            <Button x:Name="AddTeamB" Click="AjouterMembre" Grid.Column="0" Grid.Row="1" Content="Ajouter Membres" Margin="5,20,5,20"/>
+            <Button x:Name="RemoveTeamB" Click="SupprimerSelectionnes" Grid.Column="1" Grid.Row="1" Content="Supprimer sélectionnés" Margin="5,20,5,20" Padding="5,0,5,0"/>
+        </Grid>
+
+        <DataGrid x:Name="members" AutoGenerateColumns="False" 
+                  ScrollViewer.CanContentScroll="True" 
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"                  Grid.Row="1"                  IsReadOnly="True">
+
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Type}" Value="Coach">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </DataTrigger>
+
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.Resources>
+
+
+            <DataGrid.Columns>                <DataGridTemplateColumn Header="Supprimer" Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Supprimer" Click="SupprimerMembre" Margin="5,5,5,5"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>                                <DataGridTextColumn Header="Prenom" Binding="{Binding FirstName}" Width="*"/>
+                <DataGridTextColumn Header="Nom" Binding="{Binding LastName}" Width="*"/>
+                <DataGridTextColumn Header="Sexe" Binding="{Binding Gender}" Width="*"/>                <DataGridTextColumn Header="Niveau" Binding="{Binding LevelDescription}" Width="*"/>
+                <DataGridTextColumn Header="Age" Binding="{Binding Age}" Width="*"/>                <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="*"/>
+                <DataGridTextColumn Header="Cotisation Payé" Binding="{Binding SubscriptionPaidThidYear}" Width="Auto"/>
+                <DataGridTextColumn Header="Type de Licence" Binding="{Binding RegistrationType }" Width="Auto"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="valider" Content="Valider" Click="AjouterModifier" Grid.Row="4" Grid.Column="0"/>
+            <Button x:Name="AnnulerB" Click="Annuler" Content="Annuler" Grid.Row="4" Grid.Column="1"/>
+
+
+        </Grid>
+    </Grid>
+</Page>

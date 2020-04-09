@@ -1,0 +1,44 @@
+﻿
+<Window x:Class="ClubTennis2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClubTennis2"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" 
+        WindowState="Maximized"
+        MinWidth="950"
+        MinHeight="735"
+        Title="MainWindow">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="127*"/>
+            <ColumnDefinition Width="667*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.ColumnSpan="2">
+            <!-- Buttons -->
+            <Grid x:Name="MainButtons" Height="35">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="ListMemberB" Click="GoListMemberPage" Grid.Column="0" Content="Liste Membres (Tous)" Background="#332b86"/>
+                <Button x:Name="AddMemberB" Click="GoAddMemberPage" Grid.Column="1" Content="Ajouter Membre"/>
+                <Button x:Name="CompetitionB" Click="GoCompetitionPage" Grid.Column="2" Content="Competition" />
+                <Button x:Name="ClinicB" Click="GoClinicPage" Grid.Column="3" Content="Stage" />
+                <Button x:Name="TournamentB" Click="GoTournamentPage" Grid.Column="4" Content="Tournoi" />
+
+            </Grid>
+        </StackPanel>
+
+        <Frame x:Name="Main" Source="ListMemberPage.xaml" Margin="0,35,0,0" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2"/>
+    </Grid>
+
+</Window>

@@ -1,0 +1,103 @@
+﻿<Page x:Class="ClubTennis2.AddMemberPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ClubTennis2"
+      mc:Ignorable="d" 
+      d:DesignWidth="950"
+      Title="AddMemberPage"
+      Background="White">
+
+    <Grid >
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="AddMemberB" Click="GoAddMemberPage" Grid.Column="0" Content="Ajouter membre" Background="#332b86"/>
+            <Button x:Name="AddEmployeeB" Click="GoAddEmployeePage" Grid.Column="1" Content="Ajouter Salarié"/>
+        </Grid>
+
+        <Grid x:Name="MemberGrid" Grid.Row="1" Margin="10">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label Content="Prénom: " Margin="20,0,20,0" Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="prenomTextBox"  Grid.Row="0" Grid.Column="1" VerticalContentAlignment="Center" Margin="0,10,0,10"/>
+
+            <Label Content="Nom: " Margin="20,0,20,0" Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="nomTextBox" Grid.Row="1" Grid.Column="1" VerticalContentAlignment="Center" Margin="0,10,0,10"/>
+
+            <Label Content="Genre: " Margin="20,0,20,0" Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center"/>
+            <ComboBox x:Name="genreComboBox" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" Margin="0,10,0,10"/>
+
+            <Label Content="Adresse: " Margin="20,0,20,0" Grid.Row="3" Grid.Column="0" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="adresseTextBox" Grid.Row="3" Grid.Column="1" VerticalContentAlignment="Center" Margin="0,10,0,10"/>
+
+            <Label Content="Ville: " Margin="20,0,20,0" Grid.Row="4" Grid.Column="0" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="villeTextBox" Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Center" Margin="0,10,0,10"/>
+
+            <Label Content="Code Postale: " Margin="20,0,20,0" Grid.Row="5" Grid.Column="0" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="codePostaleTextBox" Grid.Row="5" PreviewTextInput="NumberValidationTextBox" Grid.Column="1" VerticalContentAlignment="Center" Margin="0,10,0,10"/>
+
+            <Label Content="Inscription: " Margin="20,0,20,0" Grid.Row="6" Grid.Column="0" VerticalContentAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2">
+                <RadioButton x:Name="leisure" IsChecked="True" Checked="SelectLeisure" GroupName="c" VerticalContentAlignment="Center" Margin="2,0,12,0">Loisir</RadioButton>
+                <RadioButton x:Name="competition" GroupName="c" Checked="SelectCompetition" VerticalContentAlignment="Center" Margin="2,0,12,0">Compétition</RadioButton>
+            </StackPanel>
+
+            <Label x:Name="levelLabel" Margin="20,0,20,0" Content="Niveau: " Visibility="Hidden" Grid.Row="7" Grid.Column="0" VerticalContentAlignment="Center"/>
+            <ComboBox x:Name="levelComboBox" Grid.Row="7" Visibility="Hidden" Grid.Column="1" VerticalContentAlignment="Center" Margin="0,10,0,10"/>
+
+            <Label Content="Date de Naissance: " Grid.Row="0" Grid.Column="3" VerticalContentAlignment="Center"/>
+            <Calendar x:Name="birthdateCalendar"  Grid.Row="1" Grid.Column="3" Grid.RowSpan="6" Grid.ColumnSpan="2"/>
+
+            <Label x:Name="ribLabel" Margin="20,0,20,0" Content="RIB: " Visibility="Hidden" Grid.Row="8" Grid.Column="0" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="ribTextBox" Visibility="Hidden" Grid.Row="8" Grid.Column="1" VerticalContentAlignment="Center" Margin="0,10,0,10"/>
+
+            <Label x:Name="salaryLabel" Margin="20,0,20,0" Content="Salaire: " Visibility="Hidden" Grid.Row="9" Grid.Column="0" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="salaryTextBox" Visibility="Hidden" Grid.Row="9" Grid.Column="1" VerticalContentAlignment="Center" Margin="0,10,0,10" PreviewTextInput="NumberValidationTextBox"/>
+
+            <StackPanel Visibility="Hidden" x:Name="job" Orientation="Horizontal" Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+                <RadioButton x:Name="coach" Click="ShowStatus" GroupName="c1" VerticalContentAlignment="Center" Margin="2,0,12,0">Coach</RadioButton>
+                <RadioButton x:Name="staff" IsChecked="True" GroupName="c1" Click="HideStatus" VerticalContentAlignment="Center" Margin="2,0,12,0">Staff</RadioButton>
+            </StackPanel>
+
+            <StackPanel Visibility="Hidden" x:Name="status" Orientation="Horizontal" Grid.Row="8" Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+                <RadioButton x:Name="freelance" IsChecked="True" GroupName="c2" VerticalContentAlignment="Center" Margin="2,0,12,0">Indépendant</RadioButton>
+                <RadioButton x:Name="salary" GroupName="c2" VerticalContentAlignment="Center" Margin="2,0,12,0">Salarié</RadioButton>
+            </StackPanel>
+
+            <Button x:Name="cancelB" Click="Annuler" Content="Annuler/Supprimer" Grid.Row="9" Grid.Column="3" Margin="5"/>
+            <Button x:Name="validB" Click="Valider" Content="Valider" Grid.Row="9" Grid.Column="4" Margin="5"/>
+        </Grid>
+    </Grid>
+</Page>
