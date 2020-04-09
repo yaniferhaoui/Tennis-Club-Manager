@@ -1,7 +1,7 @@
 Tennis Club Manager
 ========
 
-School Project: WPF interface which allow user to manage his Tennis Club.
+School Project: WPF interface which allows user to manage his Tennis Club.
 
 
 ### Screenshots
